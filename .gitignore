@@ -1,0 +1,5 @@
+#DONT INCLUDE THIS FILES/FOLDERS
+
+.idea
+.venv
+__pycache__
