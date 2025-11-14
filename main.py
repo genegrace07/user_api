@@ -31,9 +31,10 @@ def get_userbyid(userid:int):
             return u
     return 'Not found'
 
-@app.put('/user_details/{userid}')
-def user_update(userid:int):
+@app.put('/user_details')
+def user_update(userid:int,new_update:UserDetails):
     for u in users:
         if u.id == userid:
-            return u
+            UserDetails[u].id = new_update
+            return users
     return 'Not found'
