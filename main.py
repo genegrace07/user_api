@@ -7,7 +7,7 @@ users = [
     UserDetails(id=0,name='luffy',position='captain',salary=100000),
     UserDetails(id=1,name='zorro',position='right hand',salary=80000),
     UserDetails(id=2,name='sanji',position='cook',salary=60000),
-    UserDetails(id=3,name='nami',position='navigaor',salary=40000),
+    UserDetails(id=3,name='nami',position='navigator',salary=40000),
     UserDetails(id=4,name='yusof',position='sniper',salary=55000)
 ]
 
@@ -35,6 +35,13 @@ def get_userbyid(userid:int):
 def user_update(userid:int,new_update:UserDetails):
     for u in users:
         if u.id == userid:
-            UserDetails[u].id = new_update
+            u.id = new_update
+            return users
+    return 'Not found'
+@app.delete('/user_details')
+def user_delete(userid:int):
+    for u in users:
+        if u.id == userid:
+            del users[u]
             return users
     return 'Not found'
