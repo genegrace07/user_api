@@ -42,6 +42,6 @@ def user_update(userid:int,new_update:UserDetails):
 def user_delete(userid:int):
     for u in users:
         if u.id == userid:
-            del users[u]
+            del users[u.id]
             return users
     return 'Not found'
