@@ -14,34 +14,30 @@ users = [
 @app.get('/')
 def view():
     return users
-
 @app.get('/user_details')
 def view2():
     return users
-
 @app.post('/user_details')
 def add_user(adduser:UserDetails):
     users.append(adduser)
     return users
-
 @app.get('/user_details/{userid}')
 def get_userbyid(userid:int):
-    for u in users:
-        if u.id == userid:
-            return u
+    for u in range(len(users)):
+        if users[u].id == userid:
+            return users[u]
     return 'Not found'
-
 @app.put('/user_details')
-def user_update(userid:int,new_update:UserDetails):
-    for u in users:
-        if u.id == userid:
-            u.id = new_update
+def user_update(id:int,new_update:UserDetails):
+    for u in range(len(users)):
+        if users[u].id == id:
+            users[u] = new_update
             return users
     return 'Not found'
 @app.delete('/user_details')
 def user_delete(userid:int):
-    for u in users:
-        if u.id == userid:
-            del users[u.id]
+    for u in range(len(users)):
+        if users[u].id == userid:
+            del users[u]
             return users
     return 'Not found'
